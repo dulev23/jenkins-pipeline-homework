@@ -1,0 +1,41 @@
+mkdir docker-python-homework
+cd docker-python-homework
+echo 'print("Hello from Docker Python container")' > app.py
+cat > Dockerfile <<EOF
+> FROM python:3.11-alpine
+WORKDIR /app
+COPY app.py /app
+CMD ["python","app.py"]
+EOF
+$ docker build -t docker-python-app:v1 .
+[+] Building 27.2s (9/9) FINISHED                                                                docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                             0.1s
+ => => transferring dockerfile: 115B                                                                             0.0s 
+ => [internal] load metadata for docker.io/library/python:3.11-alpine                                            3.6s 
+ => [auth] library/python:pull token for registry-1.docker.io                                                    0.0s
+ => [internal] load .dockerignore                                                                                0.0s
+ => => transferring context: 2B                                                                                  0.0s 
+ => [1/3] FROM docker.io/library/python:3.11-alpine@sha256:f07e2ace46f560f09a6eeec7b4913b80ee99546e749ef82342a  22.5s 
+ => => resolve docker.io/library/python:3.11-alpine@sha256:f07e2ace46f560f09a6eeec7b4913b80ee99546e749ef82342a4  0.0s 
+ => => sha256:0b03716e5e03b2134212b6536fecae304149a4fb5586e92073e3b8f97af5b617 247B / 247B                       0.4s 
+ => => sha256:8d1e490ed26d028959a24939e51d195c903413dc99db7948740a3933b18cdd5d 16.02MB / 16.02MB                21.0s 
+ => => sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.86MB / 3.86MB                   7.2s
+ => => sha256:811797f98545e24df50fd93066350a95b56d2300eb535b3891dc7a49ee42a239 460.94kB / 460.94kB               2.3s
+ => => extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153                        0.3s 
+ => => extracting sha256:811797f98545e24df50fd93066350a95b56d2300eb535b3891dc7a49ee42a239                        0.4s 
+ => => extracting sha256:8d1e490ed26d028959a24939e51d195c903413dc99db7948740a3933b18cdd5d                        1.3s
+ => => extracting sha256:0b03716e5e03b2134212b6536fecae304149a4fb5586e92073e3b8f97af5b617                        0.0s
+ => [internal] load build context                                                                                0.1s 
+ => => transferring context: 77B                                                                                 0.0s 
+ => [2/3] WORKDIR /app                                                                                           0.2s 
+ => [3/3] COPY app.py /app                                                                                       0.1s 
+ => exporting to image                                                                                           0.4s 
+ => => exporting layers                                                                                          0.2s 
+ => => exporting manifest sha256:1cff0387114c5df378afdba54a6f1838d67533a38eaf216459cf5641840ffd74                0.0s 
+ => => exporting config sha256:001a41f0301af330f0f4731231f77a3f591dca54212947a19979d2685778b87a                  0.0s 
+ => => exporting attestation manifest sha256:c176486104c4ead17585e8f59644bb5b7848ee22a0cc9cfa2a688695b10b76dd    0.0s 
+ => => exporting manifest list sha256:b63c4caa181d9ef70ae8c7331360d946902320166cfa280bf13382d91acb50c0           0.0s 
+ => => naming to docker.io/library/docker-python-app:v1                                                          0.0s 
+ => => unpacking to docker.io/library/docker-python-app:v1        
+docker run docker-python-app:v1
+Hello from Docker Python container

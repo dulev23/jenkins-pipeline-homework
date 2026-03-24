@@ -1,0 +1,22 @@
+docker-compose up -d
+$ docker-compose up -d
+time="2026-03-17T13:32:37+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-hom
+ework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"                                                                            [+] up 1/1
+ ✔ Container compose-homework-app-redis-1 Running                                                    0.0s
+$ docker compose stop
+time="2026-03-17T13:33:09+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-homework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] stop 2/2
+ ✔ Container compose-homework-app-web-1   Stopped                                                    0.0s
+ ✔ Container compose-homework-app-redis-1 Stopped  
+ $ docker-compose ps
+time="2026-03-17T13:33:28+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-homework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+$ docker-compose down
+time="2026-03-17T13:33:53+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-homework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] down 3/3
+ ✔ Container compose-homework-app-web-1   Removed                                                    0.0s
+ ✔ Container compose-homework-app-redis-1 Removed                                                    0.0s
+ ✔ Network compose-homework-app_default   Removed 
+ $ docker-compose ps
+time="2026-03-17T13:34:09+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-homework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS

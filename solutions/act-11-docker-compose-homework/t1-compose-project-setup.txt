@@ -1,0 +1,96 @@
+$ git checkout master
+Switched to branch 'master'
+
+nikol@DULO MINGW64 ~/IdeaProjects/untitled (master)
+$ ls
+docker-python-homework/  file.txt  solutions/  src/  untitled.iml
+
+nikol@DULO MINGW64 ~/IdeaProjects/untitled (master)
+$ mkdir compose-homework-app
+
+nikol@DULO MINGW64 ~/IdeaProjects/untitled (master)
+$ cd compose-homework-app
+
+nikol@DULO MINGW64 ~/IdeaProjects/untitled/compose-homework-app (master)
+$ nano docker-compose.yml
+
+nikol@DULO MINGW64 ~/IdeaProjects/untitled/compose-homework-app (master)
+$ docker-compose --version
+Docker Compose version v5.0.2
+$ docker-compose up -d
+time="2026-03-17T13:11:31+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-homework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] up 24/24
+ ✔ Image jamtur01/composeapp              Pulled                                                   891.8s
+ ✔ Image redis                            Pulled                                                   159.3s
+ ✔ Network compose-homework-app_default   Created                                                  0.1s
+ ✔ Container compose-homework-app-web-1   Created                                                  0.6s
+ ✔ Container compose-homework-app-redis-1 Created     
+ $ docker-compose ps
+time="2026-03-17T13:30:43+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-homework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+NAME                           IMAGE     COMMAND                  SERVICE   CREATED         STATUS         PORTS
+compose-homework-app-redis-1   redis     "docker-entrypoint.s…"   redis     4 minutes ago   Up 4 minutes   6379/tcp
+docker-compose logs
+$ docker-compose logs
+time="2026-03-17T13:31:01+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-hom
+ework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"                                                                            redis-1  | Starting Redis Server
+redis-1  | 1:C 17 Mar 2026 12:26:24.045 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 17 Mar 2026 12:26:24.045 * Redis version=8.6.1, bits=64, commit=00000000, modified=1, pid=
+1, just started                                                                                          redis-1  | 1:C 17 Mar 2026 12:26:24.045 * Configuration loaded
+redis-1  | 1:M 17 Mar 2026 12:26:24.046 * monotonic clock: POSIX clock_gettime
+web-1    | python: can't open file 'app.py': [Errno 2] No such file or directory
+redis-1  | 1:M 17 Mar 2026 12:26:24.047 * Running mode=standalone, port=6379.
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf> RedisBloom version 8.6.0 (Git=unknown)
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf> Registering configuration options: [
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf>  { bf-error-rate       :      0.01 }
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf>  { bf-initial-size     :       100 }
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf>  { bf-expansion-factor :         2 }
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf>  { cf-bucket-size      :         2 }
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf>  { cf-initial-size     :      1024 }
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf>  { cf-max-iterations   :        20 }
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf>  { cf-expansion-factor :         1 }
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf>  { cf-max-expansions   :        32 }
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * <bf> ]
+redis-1  | 1:M 17 Mar 2026 12:26:24.048 * Module 'bf' loaded from /usr/local/lib/redis/modules//redisbloo
+m.so                                                                                                     redis-1  | 1:M 17 Mar 2026 12:26:24.051 * <search> Redis version found by RedisSearch : 8.6.1 - oss      
+redis-1  | 1:M 17 Mar 2026 12:26:24.051 * <search> RediSearch version 8.6.0 (Git=7782b97)
+redis-1  | 1:M 17 Mar 2026 12:26:24.051 * <search> Low level api version 1 initialized successfully      
+redis-1  | 1:M 17 Mar 2026 12:26:24.051 * <search> gc: ON, prefix min length: 2, min word length to stem:
+ 4, prefix max expansions: 200, query timeout (ms): 500, timeout policy: return, oom policy: return, cursor read size: 1000, cursor max idle (ms): 300000, max doctable size: 1000000, max number of search results:  1000000, default scorer: BM25STD,                                                                    redis-1  | 1:M 17 Mar 2026 12:26:24.051 * <search> Initialized thread pools!
+redis-1  | 1:M 17 Mar 2026 12:26:24.052 * <search> Disabled workers threadpool of size 0
+redis-1  | 1:M 17 Mar 2026 12:26:24.052 * <search> Subscribe to config changes
+redis-1  | 1:M 17 Mar 2026 12:26:24.052 * <search> Subscribe to cluster slot migration events
+redis-1  | 1:M 17 Mar 2026 12:26:24.052 * <search> Enabled role change notification
+redis-1  | 1:M 17 Mar 2026 12:26:24.052 * <search> Cluster configuration: AUTO partitions, type: 0, coord
+inator timeout: 0ms                                                                                      redis-1  | 1:M 17 Mar 2026 12:26:24.053 * Module 'search' loaded from /usr/local/lib/redis/modules//redis
+earch.so                                                                                                 redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries> RedisTimeSeries version 80600, git_sha=05fd355db74
+8676861dc4c17d19c8c1ca74c0154                                                                            redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries> Redis version found by RedisTimeSeries : 8.6.1 - o
+ss                                                                                                       redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries> Registering configuration options: [
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries>  { ts-compaction-policy   :              }        
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries>  { ts-num-threads         :            3 }        
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries>  { ts-retention-policy    :            0 }        
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries>  { ts-duplicate-policy    :        block }        
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries>  { ts-chunk-size-bytes    :         4096 }        
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries>  { ts-encoding            :   compressed }        
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries>  { ts-ignore-max-time-diff:            0 }        
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries>  { ts-ignore-max-val-diff :     0.000000 }        
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries> ]
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries> Detected redis oss
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries> Subscribe to ASM events
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * <timeseries> Enabled diskless replication
+redis-1  | 1:M 17 Mar 2026 12:26:24.054 * Module 'timeseries' loaded from /usr/local/lib/redis/modules//r
+edistimeseries.so                                                                                        redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Created new data type 'ReJSON-RL'
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> version: 80600 git sha: unknown branch: unknown       
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Exported RedisJSON_V1 API
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Exported RedisJSON_V2 API
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Exported RedisJSON_V3 API
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Exported RedisJSON_V4 API
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Exported RedisJSON_V5 API
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Exported RedisJSON_V6 API
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Enabled diskless replication
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <ReJSON> Initialized shared string cache, thread safe: true.   
+redis-1  | 1:M 17 Mar 2026 12:26:24.055 * Module 'ReJSON' loaded from /usr/local/lib/redis/modules//rejso
+n.so                                                                                                     redis-1  | 1:M 17 Mar 2026 12:26:24.055 * <search> Acquired RedisJSON_V6 API
+redis-1  | 1:M 17 Mar 2026 12:26:24.056 * Server initialized
+redis-1  | 1:M 17 Mar 2026 12:26:24.056 * Ready to accept connections tcp
+redis-1  | 1:M 17 Mar 2026 12:26:24.056 # WARNING: Redis does not require authentication and is not prote
+cted by network restrictions. Redis will accept connections from any IP address on any network interface.

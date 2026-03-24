@@ -1,0 +1,220 @@
+mkdir docker-logs-homework
+cd docker-logs-homework
+echo 'FROM alpine
+CMD sh -c '\''while true; do echo "Docker log entry $(date)"; sleep 2; done'\''' > Dockerfile
+docker build -t docker-log-generator:v1 .
+[+] Building 2.9s (6/6) FINISHED                                                    docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                0.1s
+ => => transferring dockerfile: 123B                                                                0.0s 
+ => [internal] load metadata for docker.io/library/alpine:latest                                    2.2s 
+ => [auth] library/alpine:pull token for registry-1.docker.io                                       0.0s
+ => [internal] load .dockerignore                                                                   0.1s
+ => => transferring context: 2B                                                                     0.0s 
+ => [1/1] FROM docker.io/library/alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e88  0.1s 
+ => => resolve docker.io/library/alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e88  0.0s 
+ => exporting to image                                                                              0.2s
+ => => exporting layers                                                                             0.0s 
+ => => exporting manifest sha256:2a820fea43ff393ebb84d78b0ce794d6335e03b4df19524af6b51f8596156892   0.0s 
+ => => exporting config sha256:c83b9ca09d34b81f5ffaf4faa3bf481055b90f215959804ce82121b05abe457c     0.0s 
+ => => exporting attestation manifest sha256:f3d965fcec80a7aa437a75e698d1e80b2b0d731fdccab384de8b0  0.1s 
+ => => exporting manifest list sha256:4e3dbd0bf5e6bf0a67f7d21c137f0ea823826404c671dab4623b47954a15  0.0s
+ => => naming to docker.io/library/docker-log-generator:v1                                          0.0s 
+ => => unpacking to docker.io/library/docker-log-generator:v1                                       0.0s
+docker run -d --name log-gen-container docker-log-generator:v1
+3fe3c2c799b808264cd1928edab2af27d71d2e2bf75d9021b2b2c6ceba4a46f3
+docker logs log-gen-container
+Docker log entry Mon Mar 16 15:48:03 UTC 2026
+Docker log entry Mon Mar 16 15:48:05 UTC 2026
+Docker log entry Mon Mar 16 15:48:07 UTC 2026
+Docker log entry Mon Mar 16 15:48:09 UTC 2026
+Docker log entry Mon Mar 16 15:48:11 UTC 2026
+Docker log entry Mon Mar 16 15:48:13 UTC 2026
+Docker log entry Mon Mar 16 15:48:15 UTC 2026
+Docker log entry Mon Mar 16 15:48:17 UTC 2026
+Docker log entry Mon Mar 16 15:48:19 UTC 2026
+Docker log entry Mon Mar 16 15:48:21 UTC 2026
+Docker log entry Mon Mar 16 15:48:23 UTC 2026
+Docker log entry Mon Mar 16 15:48:25 UTC 2026
+Docker log entry Mon Mar 16 15:48:27 UTC 2026
+Docker log entry Mon Mar 16 15:48:29 UTC 2026
+Docker log entry Mon Mar 16 15:48:31 UTC 2026
+Docker log entry Mon Mar 16 15:48:33 UTC 2026
+Docker log entry Mon Mar 16 15:48:35 UTC 2026
+Docker log entry Mon Mar 16 15:48:37 UTC 2026
+Docker log entry Mon Mar 16 15:48:39 UTC 2026
+Docker log entry Mon Mar 16 15:48:41 UTC 2026
+Docker log entry Mon Mar 16 15:48:43 UTC 2026
+Docker log entry Mon Mar 16 15:48:45 UTC 2026
+sleep 6
+docker logs log-gen-container
+$ docker logs log-gen-container
+Docker log entry Mon Mar 16 15:48:03 UTC 2026
+Docker log entry Mon Mar 16 15:48:05 UTC 2026
+Docker log entry Mon Mar 16 15:48:07 UTC 2026
+Docker log entry Mon Mar 16 15:48:09 UTC 2026
+Docker log entry Mon Mar 16 15:48:11 UTC 2026
+Docker log entry Mon Mar 16 15:48:13 UTC 2026
+Docker log entry Mon Mar 16 15:48:15 UTC 2026
+Docker log entry Mon Mar 16 15:48:17 UTC 2026
+Docker log entry Mon Mar 16 15:48:19 UTC 2026
+Docker log entry Mon Mar 16 15:48:21 UTC 2026
+Docker log entry Mon Mar 16 15:48:23 UTC 2026
+Docker log entry Mon Mar 16 15:48:25 UTC 2026
+Docker log entry Mon Mar 16 15:48:27 UTC 2026
+Docker log entry Mon Mar 16 15:48:29 UTC 2026
+Docker log entry Mon Mar 16 15:48:31 UTC 2026
+Docker log entry Mon Mar 16 15:48:33 UTC 2026
+Docker log entry Mon Mar 16 15:48:35 UTC 2026
+Docker log entry Mon Mar 16 15:48:37 UTC 2026
+Docker log entry Mon Mar 16 15:48:39 UTC 2026
+Docker log entry Mon Mar 16 15:48:41 UTC 2026
+Docker log entry Mon Mar 16 15:48:43 UTC 2026
+Docker log entry Mon Mar 16 15:48:45 UTC 2026
+Docker log entry Mon Mar 16 15:48:47 UTC 2026
+Docker log entry Mon Mar 16 15:48:49 UTC 2026
+Docker log entry Mon Mar 16 15:48:51 UTC 2026
+Docker log entry Mon Mar 16 15:48:53 UTC 2026
+Docker log entry Mon Mar 16 15:48:55 UTC 2026
+Docker log entry Mon Mar 16 15:48:57 UTC 2026
+Docker log entry Mon Mar 16 15:48:59 UTC 2026
+Docker log entry Mon Mar 16 15:49:01 UTC 2026
+Docker log entry Mon Mar 16 15:49:03 UTC 2026
+Docker log entry Mon Mar 16 15:49:05 UTC 2026
+Docker log entry Mon Mar 16 15:49:07 UTC 2026
+Docker log entry Mon Mar 16 15:49:09 UTC 2026
+Docker log entry Mon Mar 16 15:49:11 UTC 2026
+Docker log entry Mon Mar 16 15:49:13 UTC 2026
+Docker log entry Mon Mar 16 15:49:15 UTC 2026
+Docker log entry Mon Mar 16 15:49:18 UTC 2026
+Docker log entry Mon Mar 16 15:49:20 UTC 2026
+Docker log entry Mon Mar 16 15:49:22 UTC 2026
+Docker log entry Mon Mar 16 15:49:24 UTC 2026
+Docker log entry Mon Mar 16 15:49:26 UTC 2026
+Docker log entry Mon Mar 16 15:49:28 UTC 2026
+Docker log entry Mon Mar 16 15:49:30 UTC 2026
+Docker log entry Mon Mar 16 15:49:32 UTC 2026
+Docker log entry Mon Mar 16 15:49:34 UTC 2026
+Docker log entry Mon Mar 16 15:49:36 UTC 2026
+Docker log entry Mon Mar 16 15:49:38 UTC 2026
+Docker log entry Mon Mar 16 15:49:40 UTC 2026
+Docker log entry Mon Mar 16 15:49:42 UTC 2026
+Docker log entry Mon Mar 16 15:49:44 UTC 2026
+Docker log entry Mon Mar 16 15:49:46 UTC 2026
+Docker log entry Mon Mar 16 15:49:48 UTC 2026
+Docker log entry Mon Mar 16 15:49:50 UTC 2026
+Docker log entry Mon Mar 16 15:49:52 UTC 2026
+Docker log entry Mon Mar 16 15:49:54 UTC 2026
+Docker log entry Mon Mar 16 15:49:56 UTC 2026
+Docker log entry Mon Mar 16 15:49:58 UTC 2026
+Docker log entry Mon Mar 16 15:50:00 UTC 2026
+Docker log entry Mon Mar 16 15:50:02 UTC 2026
+Docker log entry Mon Mar 16 15:50:04 UTC 2026
+Docker log entry Mon Mar 16 15:50:06 UTC 2026
+Docker log entry Mon Mar 16 15:50:08 UTC 2026
+Docker log entry Mon Mar 16 15:50:10 UTC 2026
+Docker log entry Mon Mar 16 15:50:12 UTC 2026
+Docker log entry Mon Mar 16 15:50:14 UTC 2026
+Docker log entry Mon Mar 16 15:50:16 UTC 2026
+Docker log entry Mon Mar 16 15:50:18 UTC 2026
+Docker log entry Mon Mar 16 15:50:20 UTC 2026
+Docker log entry Mon Mar 16 15:50:22 UTC 2026
+Docker log entry Mon Mar 16 15:50:24 UTC 2026
+Docker log entry Mon Mar 16 15:50:26 UTC 2026
+Docker log entry Mon Mar 16 15:50:28 UTC 2026
+Docker log entry Mon Mar 16 15:50:30 UTC 2026
+Docker log entry Mon Mar 16 15:50:32 UTC 2026
+Docker log entry Mon Mar 16 15:50:34 UTC 2026
+Docker log entry Mon Mar 16 15:50:36 UTC 2026
+Docker log entry Mon Mar 16 15:50:38 UTC 2026
+Docker log entry Mon Mar 16 15:50:40 UTC 2026
+Docker log entry Mon Mar 16 15:50:42 UTC 2026
+Docker log entry Mon Mar 16 15:50:44 UTC 2026
+Docker log entry Mon Mar 16 15:50:46 UTC 2026
+Docker log entry Mon Mar 16 15:50:48 UTC 2026
+Docker log entry Mon Mar 16 15:50:50 UTC 2026
+Docker log entry Mon Mar 16 15:50:52 UTC 2026
+Docker log entry Mon Mar 16 15:50:54 UTC 2026
+Docker log entry Mon Mar 16 15:50:56 UTC 2026
+Docker log entry Mon Mar 16 15:50:58 UTC 2026
+Docker log entry Mon Mar 16 15:51:00 UTC 2026
+Docker log entry Mon Mar 16 15:51:02 UTC 2026
+Docker log entry Mon Mar 16 15:51:04 UTC 2026
+Docker log entry Mon Mar 16 15:51:06 UTC 2026
+Docker log entry Mon Mar 16 15:51:08 UTC 2026
+Docker log entry Mon Mar 16 15:51:10 UTC 2026
+Docker log entry Mon Mar 16 15:51:12 UTC 2026
+Docker log entry Mon Mar 16 15:51:14 UTC 2026
+Docker log entry Mon Mar 16 15:51:16 UTC 2026
+Docker log entry Mon Mar 16 15:51:18 UTC 2026
+Docker log entry Mon Mar 16 15:51:20 UTC 2026
+Docker log entry Mon Mar 16 15:51:22 UTC 2026
+Docker log entry Mon Mar 16 15:51:24 UTC 2026
+Docker log entry Mon Mar 16 15:51:26 UTC 2026
+Docker log entry Mon Mar 16 15:51:28 UTC 2026
+Docker log entry Mon Mar 16 15:51:30 UTC 2026
+Docker log entry Mon Mar 16 15:51:32 UTC 2026
+Docker log entry Mon Mar 16 15:51:34 UTC 2026
+Docker log entry Mon Mar 16 15:51:36 UTC 2026
+Docker log entry Mon Mar 16 15:51:38 UTC 2026
+Docker log entry Mon Mar 16 15:51:40 UTC 2026
+Docker log entry Mon Mar 16 15:51:42 UTC 2026
+Docker log entry Mon Mar 16 15:51:44 UTC 2026
+Docker log entry Mon Mar 16 15:51:46 UTC 2026
+Docker log entry Mon Mar 16 15:51:48 UTC 2026
+Docker log entry Mon Mar 16 15:51:50 UTC 2026
+Docker log entry Mon Mar 16 15:51:52 UTC 2026
+Docker log entry Mon Mar 16 15:51:54 UTC 2026
+Docker log entry Mon Mar 16 15:51:56 UTC 2026
+Docker log entry Mon Mar 16 15:51:58 UTC 2026
+Docker log entry Mon Mar 16 15:52:00 UTC 2026
+Docker log entry Mon Mar 16 15:52:02 UTC 2026
+Docker log entry Mon Mar 16 15:52:04 UTC 2026
+Docker log entry Mon Mar 16 15:52:06 UTC 2026
+Docker log entry Mon Mar 16 15:52:08 UTC 2026
+Docker log entry Mon Mar 16 15:52:10 UTC 2026
+Docker log entry Mon Mar 16 15:52:12 UTC 2026
+Docker log entry Mon Mar 16 15:52:14 UTC 2026
+Docker log entry Mon Mar 16 15:52:16 UTC 2026
+Docker log entry Mon Mar 16 15:52:18 UTC 2026
+Docker log entry Mon Mar 16 15:52:20 UTC 2026
+Docker log entry Mon Mar 16 15:52:22 UTC 2026
+Docker log entry Mon Mar 16 15:52:24 UTC 2026
+Docker log entry Mon Mar 16 15:52:26 UTC 2026
+Docker log entry Mon Mar 16 15:52:28 UTC 2026
+Docker log entry Mon Mar 16 15:52:30 UTC 2026
+Docker log entry Mon Mar 16 15:52:32 UTC 2026
+Docker log entry Mon Mar 16 15:52:34 UTC 2026
+Docker log entry Mon Mar 16 15:52:36 UTC 2026
+Docker log entry Mon Mar 16 15:52:38 UTC 2026
+Docker log entry Mon Mar 16 15:52:40 UTC 2026
+Docker log entry Mon Mar 16 15:52:42 UTC 2026
+Docker log entry Mon Mar 16 15:52:44 UTC 2026
+Docker log entry Mon Mar 16 15:52:46 UTC 2026
+Docker log entry Mon Mar 16 15:52:48 UTC 2026
+Docker log entry Mon Mar 16 15:52:50 UTC 2026
+Docker log entry Mon Mar 16 15:52:52 UTC 2026
+Docker log entry Mon Mar 16 15:52:54 UTC 2026
+Docker log entry Mon Mar 16 15:52:56 UTC 2026
+Docker log entry Mon Mar 16 15:52:58 UTC 2026
+Docker log entry Mon Mar 16 15:53:00 UTC 2026
+Docker log entry Mon Mar 16 15:53:02 UTC 2026
+Docker log entry Mon Mar 16 15:53:04 UTC 2026
+Docker log entry Mon Mar 16 15:53:06 UTC 2026
+Docker log entry Mon Mar 16 15:53:08 UTC 2026
+Docker log entry Mon Mar 16 15:53:10 UTC 2026
+Docker log entry Mon Mar 16 15:53:12 UTC 2026
+Docker log entry Mon Mar 16 15:53:14 UTC 2026
+Docker log entry Mon Mar 16 15:53:16 UTC 2026
+Docker log entry Mon Mar 16 15:53:18 UTC 2026
+Docker log entry Mon Mar 16 15:53:20 UTC 2026
+Docker log entry Mon Mar 16 15:53:22 UTC 2026
+Docker log entry Mon Mar 16 15:53:24 UTC 2026
+Docker log entry Mon Mar 16 15:53:26 UTC 2026
+Docker log entry Mon Mar 16 15:53:28 UTC 2026
+Docker log entry Mon Mar 16 15:53:30 UTC 2026
+Docker log entry Mon Mar 16 15:53:32 UTC 2026
+Docker log entry Mon Mar 16 15:53:34 UTC 2026
+Docker log entry Mon Mar 16 15:53:36 UTC 2026
+Docker log entry Mon Mar 16 15:53:38 UTC 2026
+docker stop log-gen-container
+log-gen-container

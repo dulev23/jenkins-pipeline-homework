@@ -1,0 +1,40 @@
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config alias.unstage
+reset HEAD --
+git config alias.last
+log -1 HEAD
+git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=dulev23
+user.email=nikoladulev13@gmail.com
+alias.unstage=reset HEAD --
+$ echo "Example change" >> file.txt
+$ git add file.txt
+warning: in the working copy of 'file.txt', LF will be replaced by CRLF the next time Git touches it
+git unstage file.txt
+Unstaged changes after reset:
+M       file.txt
+$ git add file.txt
+warning: in the working copy of 'file.txt', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m "Example commit"
+[topic a12e1c8] Example commit
+ 1 file changed, 1 insertion(+)
+ $ git last
+commit a12e1c800fdc8383f7a43e2fad7ed6216c19095b (HEAD -> topic)
+Author: dulev23 <nikoladulev13@gmail.com>
+Date:   Mon Mar 16 16:13:10 2026 +0100
+
+    Example commit

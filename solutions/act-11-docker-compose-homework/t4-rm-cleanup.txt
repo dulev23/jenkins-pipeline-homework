@@ -1,0 +1,36 @@
+$ docker-compose up -d
+time="2026-03-17T13:38:19+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-homework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] up 1/1
+ ✔ Container compose-homework-app-redis-1 Running 
+ docker-compose stop
+$ docker-compose stop
+time="2026-03-17T13:38:30+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-hom
+ework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"                                                                            [+] stop 2/2
+ ✔ Container compose-homework-app-web-1   Stopped                                                    0.0s
+ ✔ Container compose-homework-app-redis-1 Stopped                                                    0.2s
+docker compose rm -f
+$ docker compose rm -f
+time="2026-03-17T13:38:43+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-hom
+ework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"                                                                            Going to remove compose-homework-app-redis-1, compose-homework-app-web-1
+[+] remove 2/2
+ ✔ Container compose-homework-app-web-1   Removed                                                    0.0s
+ ✔ Container compose-homework-app-redis-1 Removed                                                    0.0s
+$ docker-compose ps
+time="2026-03-17T13:38:53+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-homework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+docker-compose up -d
+$ docker-compose up -d
+time="2026-03-17T13:39:19+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-hom
+ework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"                                                                            [+] up 2/2
+ ✔ Container compose-homework-app-redis-1 Created                                                    0.1s
+ ✔ Container compose-homework-app-web-1   Created                                                    0.1s
+docker-compose down
+$ docker-compose down
+time="2026-03-17T13:39:39+01:00" level=warning msg="C:\\Users\\nikol\\IdeaProjects\\untitled\\compose-hom
+ework-app\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"                                                                            [+] down 3/3
+ ✔ Container compose-homework-app-web-1   Removed                                                    0.0s
+ ✔ Container compose-homework-app-redis-1 Removed                                                    0.3s
+ ✔ Network compose-homework-app_default   Removed                                                    0.3s
+7. Note:
+# docker compose rm removes stopped containers only.
+# It does NOT remove images, volumes, or networks.

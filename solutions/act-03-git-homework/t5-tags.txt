@@ -1,0 +1,17 @@
+git tag -a v1.4 -m "my version 1.4"
+tag v1.4
+Tagger: dulev23 <nikoladulev13@gmail.com>
+Date:   Mon Mar 16 16:08:33 2026 +0100
+
+my version 1.4
+
+commit 793887904762ec3639892fcf2ee2c315b929f11a (HEAD -> topic, tag: v1.4)
+Author: dulev23 <nikoladulev13@gmail.com>
+Date:   Mon Mar 16 15:56:57 2026 +0100
+
+    Topic commit 2
+
+diff --git a/file.txt b/file.txt
+index 522e702..6375e3e 100644
+--- a/file.txt
++++ b/file.txt

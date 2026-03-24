@@ -1,0 +1,46 @@
+$ git init
+Initialized empty Git repository in C:/Users/nikol/IdeaProjects/untitled/.git/
+$ echo "Initial content" > file.txt
+git add file.txt
+git commit -m "Initial commit"
+warning: in the working copy of 'file.txt', LF will be replaced by CRLF the next time Git touches it
+[master (root-commit) 6a21503] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+ $ git checkout -b topic
+Switched to a new branch 'topic'
+echo "Topic change 1" >> file.txt
+$ git add file.txt
+warning: in the working copy of 'file.txt', LF will be replaced by CRLF the next time Git touches it
+git commit -m "Topic commit 1"
+[topic df354a9] Topic commit 1
+ 1 file changed, 1 insertion(+)
+ echo "Topic change 2" >> file.txt
+ $ git add file.txt
+$ git commit -m "Topic commit 2"
+[topic e9cd69b] Topic commit 2
+ 1 file changed, 1 insertion(+)
+$ git checkout master
+Switched to branch 'master'
+echo "Main branch change" >> file.txt
+git add file.txt
+$ git commit -m "Main commit"
+[master 1488ac4] Main commit
+ 1 file changed, 1 insertion(+)
+$ git log --oneline --decorate --graph --all
+* 1488ac4 (HEAD -> master) Main commit
+| * e9cd69b (topic) Topic commit 2
+| * df354a9 Topic commit 1
+|/  
+* 6a21503 Initial commit
+$ git checkout topic
+Switched to branch 'topic'
+git rebase master
+[detached HEAD eb2d6d9] Topic commit 1
+ 1 file changed, 1 insertion(+)
+Successfully rebased and updated refs/heads/topic.
+git log --oneline --decorate --graph --all
+* 7938879 (HEAD -> topic) Topic commit 2
+* eb2d6d9 Topic commit 1
+* 1488ac4 (master) Main commit
+* 6a21503 Initial commit
