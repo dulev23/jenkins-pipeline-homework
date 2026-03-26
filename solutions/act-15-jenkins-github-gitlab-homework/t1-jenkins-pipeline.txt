@@ -1,0 +1,439 @@
+nano Dockerfile
+FROM nginx
+COPY index.html /usr/share/nginx/html/index.html
+nano Jenkinsfile
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "dulevnikola/kiii-jenkins"
+        DOCKER_REGISTRY = "docker.io"
+        DOCKER_CREDENTIALS_ID = "dockerhub"
+        GIT_CREDENTIALS_ID = "github"
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                echo "Cloning repository..."
+                git url: 'https://github.com/dulev23/jenkins-pipeline-homework',
+                    credentialsId: "${GIT_CREDENTIALS_ID}"
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    echo "Building Docker image: ${DOCKER_IMAGE}"
+                    sh "docker build -t ${DOCKER_IMAGE} ."
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    echo "Logging in and pushing to Docker Hub..."
+                    withCredentials([usernamePassword(
+                        credentialsId: "${DOCKER_CREDENTIALS_ID}",
+                        usernameVariable: 'DOCKER_USERNAME',
+                        passwordVariable: 'DOCKER_PASSWORD'
+                    )]) {
+                        sh """
+                            echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin
+                            docker push ${DOCKER_IMAGE}
+                        """
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline finished successfully! 🎉"
+        }
+        failure {
+            echo "Pipeline failed! ❌"
+        }
+    }
+}
+
+Selected Git installation does not exist. Using Default
+
+The recommended git tool is: NONE
+
+using credential github
+
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/jenkins-pipeline/.git # timeout=10
+
+Fetching changes from the remote Git repository
+
+ > git config remote.origin.url https://github.com/dulev23/jenkins-pipeline-homework # timeout=10
+
+Fetching upstream changes from https://github.com/dulev23/jenkins-pipeline-homework
+
+ > git --version # timeout=10
+
+ > git --version # 'git version 2.47.3'
+
+using GIT_ASKPASS to set credentials 
+
+ > git fetch --tags --force --progress -- https://github.com/dulev23/jenkins-pipeline-homework +refs/heads/*:refs/remotes/origin/* # timeout=10
+
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+
+Checking out Revision 052bca0e6556aeda8353247c0630478a502b7bcd (refs/remotes/origin/master)
+
+ > git config core.sparsecheckout # timeout=10
+
+ > git checkout -f 052bca0e6556aeda8353247c0630478a502b7bcd # timeout=10
+
+Commit message: "answered question 1"
+
+ > git rev-list --no-walk bbc98ea651a1d93fc14c895bbd90fdb99aaafba9 # timeout=10
+
+ Cloning repository...
+
+ Selected Git installation does not exist. Using Default
+
+The recommended git tool is: NONE
+
+using credential github
+
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/jenkins-pipeline/.git # timeout=10
+
+Fetching changes from the remote Git repository
+
+ > git config remote.origin.url https://github.com/dulev23/jenkins-pipeline-homework # timeout=10
+
+Fetching upstream changes from https://github.com/dulev23/jenkins-pipeline-homework
+
+ > git --version # timeout=10
+
+ > git --version # 'git version 2.47.3'
+
+using GIT_ASKPASS to set credentials 
+
+ > git fetch --tags --force --progress -- https://github.com/dulev23/jenkins-pipeline-homework +refs/heads/*:refs/remotes/origin/* # timeout=10
+
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+
+Checking out Revision 052bca0e6556aeda8353247c0630478a502b7bcd (refs/remotes/origin/master)
+
+ > git config core.sparsecheckout # timeout=10
+
+ > git checkout -f 052bca0e6556aeda8353247c0630478a502b7bcd # timeout=10
+
+ > git branch -a -v --no-abbrev # timeout=10
+
+ > git branch -D master # timeout=10
+
+ > git checkout -b master 052bca0e6556aeda8353247c0630478a502b7bcd # timeout=10
+
+Commit message: "answered question 1"
+
+Building Docker image: dulevnikola/kiii-jenkins
++ docker build -t dulevnikola/kiii-jenkins .
+
+#0 building with "default" instance using docker driver
+
+
+
+#1 [internal] load build definition from Dockerfile
+
+#1 transferring dockerfile: 97B done
+
+#1 DONE 0.0s
+
+
+
+#2 [internal] load metadata for docker.io/library/nginx:latest
+
+#2 ...
+
+
+
+#3 [auth] library/nginx:pull token for registry-1.docker.io
+
+#3 DONE 0.0s
+
+
+
+#2 [internal] load metadata for docker.io/library/nginx:latest
+
+#2 DONE 1.0s
+
+
+
+#4 [internal] load .dockerignore
+
+#4 transferring context: 2B done
+
+#4 DONE 0.0s
+
+
+
+#5 [internal] load build context
+
+#5 transferring context: 31B done
+
+#5 DONE 0.0s
+
+
+
+#6 [1/2] FROM docker.io/library/nginx:latest@sha256:7150b3a39203cb5bee612ff4a9d18774f8c7caf6399d6e8985e97e28eb751c18
+
+#6 resolve docker.io/library/nginx:latest@sha256:7150b3a39203cb5bee612ff4a9d18774f8c7caf6399d6e8985e97e28eb751c18 0.0s done
+
+#6 DONE 0.0s
+
+
+
+#7 [2/2] COPY index.html /usr/share/nginx/html/index.html
+
+#7 CACHED
+
+
+
+#8 exporting to image
+
+#8 exporting layers done
+
+#8 exporting manifest sha256:9b7eb282ca56ce1291adcf6f3a95039503f5bd31a53aa85b76d49e8c4ec6b5c2 done
+
+#8 exporting config sha256:b70a830ee8db8b6cf66dfae45b3a22f5ed477edd2f9ef1620477fde166b72173 done
+
+#8 exporting attestation manifest sha256:0c6b8583f35d925476a245027799cab6cb19823789b4d6017592d4897666a034
+
+#8 exporting attestation manifest sha256:0c6b8583f35d925476a245027799cab6cb19823789b4d6017592d4897666a034 0.0s done
+
+#8 exporting manifest list sha256:83a65a64b7e0256ad9e2f4490c79c6590cdda1805a918418c7edb4ab93563961 0.0s done
+
+#8 naming to docker.io/dulevnikola/kiii-jenkins:latest done
+
+#8 unpacking to docker.io/dulevnikola/kiii-jenkins:latest 0.0s done
+
+#8 DONE 0.1s
+Logging in and pushing to Docker Hub...
++ echo ****
+
++ docker login -u dulevnikola --password-stdin
+
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+
+Configure a credential helper to remove this warning. See
+
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+
+
+Login Succeeded
+
++ docker push dulevnikola/kiii-jenkins
+
+Using default tag: latest
+
+The push refers to repository [docker.io/dulevnikola/kiii-jenkins]
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+004dc4ec4af2: Waiting
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+cde7a05ae428: Waiting
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Waiting
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+bb3d0aa29654: Waiting
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Waiting
+
+cde7a05ae428: Waiting
+
+004dc4ec4af2: Waiting
+
+587e3d84dbb5: Layer already exists
+
+3189680c601f: Waiting
+
+5e815e07e569: Waiting
+
+ec781dee3f47: Waiting
+
+004dc4ec4af2: Layer already exists
+
+3189680c601f: Layer already exists
+
+5e815e07e569: Layer already exists
+
+ec781dee3f47: Layer already exists
+
+bb3d0aa29654: Layer already exists
+
+8934fa1a2e0b: Waiting
+
+510ddf6557d6: Layer already exists
+
+cde7a05ae428: Layer already exists
+
+8934fa1a2e0b: Pushed
+
+latest: digest: sha256:83a65a64b7e0256ad9e2f4490c79c6590cdda1805a918418c7edb4ab93563961 size: 856
+Pipeline finished successfully! 🎉

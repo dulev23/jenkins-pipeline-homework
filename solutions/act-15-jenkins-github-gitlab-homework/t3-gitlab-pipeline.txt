@@ -1,0 +1,4 @@
+Recommendation: GitHub Actions
+Since the team already uses GitHub, GitHub Actions is the obvious choice — workflows live in the same repo, trigger natively on push/PR events, and require zero extra infrastructure to set up or maintain.
+Why not Jenkins: Requires self-hosting, ongoing maintenance, and manual setup — too much overhead for a 5-person team.
+Why not GitLab CI/CD: The team is on GitHub, not GitLab. Adopting it means either migrating repos or splitting source control across two platforms — unnecessary friction.

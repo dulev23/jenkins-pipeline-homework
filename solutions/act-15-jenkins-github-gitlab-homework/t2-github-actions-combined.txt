@@ -45,3 +45,87 @@ jobs:
 
 dulevnikola
 dockerhub
+
+Run docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 97B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/nginx:latest
+#2 ...
+
+#3 [auth] library/nginx:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/nginx:latest
+#2 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 74B done
+#5 DONE 0.0s
+
+#6 [1/2] FROM docker.io/library/nginx:latest@sha256:7150b3a39203cb5bee612ff4a9d18774f8c7caf6399d6e8985e97e28eb751c18
+#6 resolve docker.io/library/nginx:latest@sha256:7150b3a39203cb5bee612ff4a9d18774f8c7caf6399d6e8985e97e28eb751c18 done
+#6 sha256:c3fe1eeae810f4a585961f17339c93f0fb1c7c8d5c02c9181814f52bdd51961c 2.29kB / 2.29kB done
+#6 sha256:0cf1d6af5ca72e2ca196afdbdbe26d96f141bd3dc14d70210707cf89032ea217 9.09kB / 9.09kB done
+#6 sha256:bb3d0aa29654655a18d97605cd63947d39ca5166d44c3341acc1bbc8d14a7a36 0B / 33.16MB 0.1s
+#6 sha256:7150b3a39203cb5bee612ff4a9d18774f8c7caf6399d6e8985e97e28eb751c18 10.23kB / 10.23kB done
+#6 sha256:510ddf6557d618d548b6f7680a84dfa925fea17316d335264eb3f09284850cd8 0B / 626B 0.1s
+#6 sha256:ec781dee3f4719c2ca0dd9e73cb1d4ed834ed1a406495eb6e44b6dfaad5d1f8f 0B / 29.78MB 0.1s
+#6 sha256:bb3d0aa29654655a18d97605cd63947d39ca5166d44c3341acc1bbc8d14a7a36 8.39MB / 33.16MB 0.3s
+#6 sha256:510ddf6557d618d548b6f7680a84dfa925fea17316d335264eb3f09284850cd8 626B / 626B 0.2s done
+#6 sha256:ec781dee3f4719c2ca0dd9e73cb1d4ed834ed1a406495eb6e44b6dfaad5d1f8f 20.97MB / 29.78MB 0.3s
+#6 sha256:cde7a05ae42831ee510e8948b80b25c297a1080875a3479c55a65f1e620fdb73 0B / 955B 0.3s
+#6 sha256:bb3d0aa29654655a18d97605cd63947d39ca5166d44c3341acc1bbc8d14a7a36 22.02MB / 33.16MB 0.4s
+#6 sha256:ec781dee3f4719c2ca0dd9e73cb1d4ed834ed1a406495eb6e44b6dfaad5d1f8f 29.78MB / 29.78MB 0.4s done
+#6 sha256:cde7a05ae42831ee510e8948b80b25c297a1080875a3479c55a65f1e620fdb73 955B / 955B 0.3s done
+#6 sha256:587e3d84dbb5b5fc406b2b292318c9a446e72c144ad849b5ef8755f5037e8704 0B / 402B 0.4s
+#6 sha256:bb3d0aa29654655a18d97605cd63947d39ca5166d44c3341acc1bbc8d14a7a36 33.16MB / 33.16MB 0.5s done
+#6 sha256:587e3d84dbb5b5fc406b2b292318c9a446e72c144ad849b5ef8755f5037e8704 402B / 402B 0.4s done
+#6 extracting sha256:ec781dee3f4719c2ca0dd9e73cb1d4ed834ed1a406495eb6e44b6dfaad5d1f8f 0.1s
+#6 sha256:3189680c601f46244f1706d0d197ddb415d9bb754236c042acffc76eeda37d39 1.21kB / 1.21kB 0.5s
+#6 sha256:5e815e07e5699b40479214a6a2a30d647495d99cd0f253ee82f528f4814469ef 0B / 1.40kB 0.5s
+#6 sha256:3189680c601f46244f1706d0d197ddb415d9bb754236c042acffc76eeda37d39 1.21kB / 1.21kB 0.5s done
+#6 sha256:5e815e07e5699b40479214a6a2a30d647495d99cd0f253ee82f528f4814469ef 1.40kB / 1.40kB 0.5s done
+#6 extracting sha256:ec781dee3f4719c2ca0dd9e73cb1d4ed834ed1a406495eb6e44b6dfaad5d1f8f 0.9s done
+#6 extracting sha256:bb3d0aa29654655a18d97605cd63947d39ca5166d44c3341acc1bbc8d14a7a36
+#6 extracting sha256:bb3d0aa29654655a18d97605cd63947d39ca5166d44c3341acc1bbc8d14a7a36 0.7s done
+#6 extracting sha256:510ddf6557d618d548b6f7680a84dfa925fea17316d335264eb3f09284850cd8
+#6 extracting sha256:510ddf6557d618d548b6f7680a84dfa925fea17316d335264eb3f09284850cd8 done
+#6 extracting sha256:cde7a05ae42831ee510e8948b80b25c297a1080875a3479c55a65f1e620fdb73 done
+#6 extracting sha256:587e3d84dbb5b5fc406b2b292318c9a446e72c144ad849b5ef8755f5037e8704 done
+#6 extracting sha256:3189680c601f46244f1706d0d197ddb415d9bb754236c042acffc76eeda37d39 done
+#6 extracting sha256:5e815e07e5699b40479214a6a2a30d647495d99cd0f253ee82f528f4814469ef done
+#6 DONE 2.5s
+
+#7 [2/2] COPY index.html /usr/share/nginx/html/index.html
+#7 DONE 0.0s
+
+#8 exporting to image
+#8 exporting layers
+#8 exporting layers 0.7s done
+#8 writing image sha256:876fcf1148d53766008a81878a83540181b8f891a2fc76ce29d844491edcbd9a done
+#8 naming to docker.io/library/my-image-name:1774560034 done
+#8 DONE 0.7s
+
+Post job cleanup.
+/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/654a7b22-d58e-41a2-8549-8fa0b814f3ce' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+/usr/bin/git config --global --add safe.directory /home/runner/work/jenkins-pipeline-homework/jenkins-pipeline-homework
+/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+http.https://github.com/.extraheader
+/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+
